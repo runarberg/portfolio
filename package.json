@@ -16,6 +16,7 @@
   "devDependencies": {
     "coffee-script": "^1.7.1",
     "gulp": "^3.8.6",
-    "gulp-webserver": "^0.4.0"
+    "gulp-webserver": "^0.4.0",
+    "livereload": "^0.3.4"
   }
 }
