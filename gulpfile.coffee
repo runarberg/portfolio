@@ -1,5 +1,7 @@
 gulp = require 'gulp'
 webserver = require 'gulp-webserver'
+marked = require 'marked'
+fileinclude = require 'gulp-file-include'
 
 gulp.task 'serve', ->
     gulp.src 'public'
@@ -13,4 +15,7 @@ gulp.task 'default', ->
         'contents/**/*.html'
         'contents/**/*.svg'
     ]
+    .pipe fileinclude
+        filters :
+            markdown: marked
     .pipe gulp.dest 'public/'
