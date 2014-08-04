@@ -1,0 +1,52 @@
+@import (reference) "defaults.less";
+
+.article {
+  font-size: 1.3em;
+  font-feature-settings: "liga", "onum";
+  
+  header {
+    h1, h2 {
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      font-weight: normal;
+      .header-rule;
+    }
+
+    .title {
+      font-size: 2.2em;
+      margin: 1em auto;
+    }
+
+    .author {
+      font-style: italic;
+      padding-left: .3em;
+    }
+  }
+
+  > section {
+    margin: 1em auto;
+    width: 40em;
+    max-width: 95%;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-bottom: .2em;
+  }
+
+  dd, dd p {
+    margin-top: .2em;
+  }
+
+  figure {
+    text-align: center;
+    figcaption {
+      font-size: .85em;
+      margin: 0.5em 2em 1em;
+      text-align: justify;
+    }
+  }
+}

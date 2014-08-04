@@ -6,14 +6,17 @@
     <meta name="date" content="2014-02-06">
     <meta name="author" content="Rúnar Berg Baugsson Sigríðarson">
     <title>Við erum enn í miðju alheimsins</title>
+    <link rel="stylesheet" href="/main.css">
   </head>
   <body>
-    <article>
+    <article class="article">
       <header>
         <h1 class="title">Við erum enn í miðju alheimsins</h1>
-        <h2>eftir: Rúnar Berg Baugsson Sigríðarson</h2>
+        <h2>eftir: <a class="author" href="/">Rúnar Berg Baugsson Sigríðarson</a></h2>
       </header>
-      @@include(markdown("midja-alheimsins/midja-alheimsins.md"))
+      <section class="level1">
+        @@include(markdown("midja-alheimsins.md"))
+      </section>
     </article>
   </body>
 </html>

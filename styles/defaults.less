@@ -1,0 +1,21 @@
+.header-rule {
+  display: flex;
+  align-items: center;
+  margin: 1em 0 2em;
+
+  &::after,
+  &::before {
+    content: "";
+    border-top: 1px solid black;
+    display: inline-block;
+    flex-grow: 1;
+    position: relative;
+    top: .12em;
+  }
+  &::after {
+    margin-left: 0.7em;
+  }
+  &::before {
+    margin-right: 0.7em;
+  }
+}

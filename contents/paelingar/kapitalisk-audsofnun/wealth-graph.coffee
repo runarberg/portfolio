@@ -1,14 +1,18 @@
-setup_wealth = ->
-    div = d3.select("div.wealth_controls")
+svg = d3.select("#wealth").append("svg")
+        .attr("class", "bar-chart")
+        .attr("width", "100%")
+
+setup_controls = ->
+    menu = d3.select("#wealth").append("menu")
+        .attr("class", "wealth-controls")
     
-    div.append("div")
-        .attr("class", "wealth_Nlab")
+    menu.append("div")
+        .attr("class", "wealth_N-label")
         .append("label")
         .attr("for", "wealth_N")
         .text "Fjöldi"
         
-    d3.select(".wealth_Nlab")
-        .append("input")
+    d3.select(".wealth_N-label").append("input")
         .attr("id", "wealth_N")
         .attr("type", "number")
         .attr("name", "wealth_N")
@@ -18,14 +22,13 @@ setup_wealth = ->
         .attr("value", "10")
         .attr "placeholder", "Fjöldi"
   
-    div.append("div")
-        .attr("class", "wealth_Wlab")
+    menu.append("div")
+        .attr("class", "wealth_W-label")
         .append("label")
         .attr("for", "wealth_W")
         .text "Upphafsfé"
         
-    d3.select(".wealth_Wlab")
-        .append("input")
+    d3.select(".wealth_W-label").append("input")
         .attr("id", "wealth_W")
         .attr("type", "number")
         .attr("name", "wealth_W")
@@ -35,13 +38,13 @@ setup_wealth = ->
         .attr("value", "100")
         .attr "placeholder", "Upphafsfé"
         
-    d3.select(".wealth_Wlab")
+    d3.select(".wealth_W-label")
         .append("button")
         .attr("class", "wealth_reset")
         .attr("title", "Reset")
         .text "⬑"
   
-    div.append("div")
+    menu.append("div")
         .attr("class", "prev-next-container")
 
     d3.select(".prev-next-container")
@@ -58,19 +61,16 @@ setup_wealth = ->
 
     return
 
-display_wealth = ->
+setup_graph = ->
     N = parseInt(document.getElementById("wealth_N").value)
     W = parseInt(document.getElementById("wealth_W").value)
     yard = Wealth(N, W)
     time = 0
     col_height = (if N > 80 then 2 else 180 / N)
-    chart = d3.select("div.wealth_display-results")
-        .append("svg")
-        .attr("class", "bar-chart")
-        .attr("width", "100%")
-        .attr("height", col_height * N + 40)
-        .append("g")
-        .attr("transform", "translate(10,15)")
+    svg.attr("height", col_height * N + 60)
+    
+    chart = svg.append("g")
+        .attr("transform", "translate(10,30)")
 
     x = d3.scale.linear()
         .domain([0, W * 4])
@@ -103,7 +103,7 @@ display_wealth = ->
         .append("text")
         .attr("y", col_height * (N + 1))
         .attr("x", "80%")
-        .attr("dx", "-3em")
+        .attr("dx", "-.2em")
         .text "Umferð " + time
     # }
 
@@ -132,8 +132,8 @@ display_wealth = ->
         return
 
     update_chart = ->
-        d3.select(".bar-chart").remove()
-        display_wealth()
+        chart.remove()
+        setup_graph()
         return
 
     d3.select(".wealth_next").on "click", ->
@@ -159,5 +159,5 @@ display_wealth = ->
 
     return
 
-setup_wealth()
-display_wealth()
+setup_controls()
+setup_graph()

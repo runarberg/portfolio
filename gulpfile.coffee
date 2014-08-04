@@ -1,11 +1,13 @@
 gulp = require 'gulp'
-webserver = require 'gulp-webserver'
-fileinclude = require 'gulp-file-include'
+autoprefix = require 'gulp-autoprefixer'
 coffee = require 'gulp-coffee'
-coffeeify = require 'coffeeify'
-browserify = require 'browserify'
+fileinclude = require 'gulp-file-include'
+less = require 'gulp-less'
+webserver = require 'gulp-webserver'
+
 marked = require 'marked'
-Q = require 'q'
+myMarked = (src) ->
+    marked(src).replace(/@@include\(&quot;(.+)&quot;\)/, '@@include("$1")')
 
 gulp.task 'serve', ->
     gulp.src 'public'
@@ -20,7 +22,7 @@ gulp.task 'articles', ->
         ]
         .pipe fileinclude
             filters :
-                markdown: marked
+                markdown: myMarked
         .pipe gulp.dest 'public/'
 
 gulp.task 'coffee', ->
@@ -28,8 +30,19 @@ gulp.task 'coffee', ->
         .pipe coffee()
         .pipe gulp.dest 'public/'
 
-gulp.task 'watch', ->
+gulp.task 'fonts', ->
+    gulp.src ['assets/fonts/*.{otf,ttf}']
+        .pipe gulp.dest 'public/assets/fonts/'
+
+gulp.task 'less', ['fonts'], ->
+    gulp.src ['styles/**/*.less']
+        .pipe less()
+        .pipe autoprefix()
+        .pipe gulp.dest 'public/'
+
+gulp.task 'watch', ['default'], ->
     gulp.watch 'contents/**/*.{html,md,svg}', ['articles']
     gulp.watch 'contents/**/*.coffee', ['coffee']
+    gulp.watch 'styles/**/*.less', ['less']
 
-gulp.task 'default', ['coffee', 'articles']
+gulp.task 'default', ['coffee', 'less', 'articles']

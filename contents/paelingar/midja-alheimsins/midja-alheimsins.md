@@ -46,9 +46,8 @@ mínum hafi verið með þeim hætti einbeitning á orðum kennarans
 lágmarkaðist. Það er heildin *ég* sem stjórna, frekar en einingarnar sem
 mynda mig.
 
-<figure>
-  <object data="midja-alheimsins/two-options.svg"
-          type="image/svg+xml"></object>
+<figure class="svg">
+  @@include("two-options.svg")
   <figcaption>
     Tveir mis-raunhæfir möguleikar á alheiminum. Þessi til
     vinstri setur manninn í miðju alheimsins, þessi til hægri
