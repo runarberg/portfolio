@@ -1,0 +1,32 @@
+.toc {
+  position: relative;
+  text-align: right;
+  > ol {
+    list-style: upper-roman;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
+  &:hover > ol {
+    background: unset;
+    display: block;
+  }
+
+  ol, li, h3 {
+    margin: 0;
+  }
+  
+  ol ol {
+    list-style: none;
+    display: none;
+  }
+
+  ol li:hover ol {
+    display: block;
+  }
+}
+
+#toc-map {
+  height: 50em;
+}
