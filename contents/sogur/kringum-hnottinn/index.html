@@ -7,15 +7,19 @@
     <meta name="author" content="Rúnar Berg Baugsson Sigríðarson">
     <meta name="author" content="Skúli Pálmason">
     <title>Kringum hnöttinn</title>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css'
+          rel='stylesheet' />
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="map.css">
   </head>
   <body>
-    <article>
+    <article class="article">
       <header>
         <h1 class="title">Kringum hnöttinn</h1>
         <h2>eftir:
-          <strong class="author">Rúnar Berg Baugsson
-            Sigríðarson</strong> og
-          <strong class="author">Skúla Pálmason</strong></h2>
+          <a href="/" class="author">Rúnar Berg Baugsson
+            Sigríðarson</a> og
+          <a href="#" class="author">Skúla Pálmason</a></h2>
         
         <nav class="toc">
           <ol>
@@ -74,6 +78,7 @@
                 Gia</a></li>
             <li><a href="#ho-chi-minh-london">Ho Chi Minh – London</a></li>
           </ol>
+          <div id="toc-map"></div>
         </nav>
       </header>
       
@@ -3017,15 +3022,15 @@
           lokahönd á niðurlæginguna með því að leggja eyjuna undir
           sauðfjárrækt fyrir Evrópumarkað og loks með því að hneppa
           restina af íbúum eyjarinnar í þrælahald. Þegar þarna var
-          komið við sögu hafði hver einasta stytta á eynni verið
-          felld. Árið 1960 sá svo flóðbylgja í kjölfarið á stærsta
-          jarðskjálfta sem mælst hefur og, átti upptök sín í Síle,
-          um að mölva það sem eftir var af þessum svonefndu Moai
-          styttum. Það tók svo einn og hálfan áratug áður en einhver
-          kom með þá hugmynd að reisa þessar dularfullu styttur
-          aftur upp svo að menn eins og við frændur getum flogið til
-          þessarar afskekktu eyju, sem heimamenn kalla <em>Rapa
-            Nui</em> (en flestir þekkja hana undir
+          komið við sögu hafði hver einasta stytta
+          á eynni verið felld. Árið 1960 sá svo flóðbylgja í
+          kjölfarið á stærsta jarðskjálfta sem mælst hefur og, átti
+          upptök sín í Síle, um að mölva það sem eftir var af þessum
+          svonefndu Moai styttum. Það tók svo einn og hálfan áratug
+          áður en einhver kom með þá hugmynd að reisa þessar
+          dularfullu styttur aftur upp svo að menn eins og við frændur
+          getum flogið til þessarar afskekktu eyju, sem heimamenn
+          kalla <em>Rapa Nui</em> (en flestir þekkja hana undir
           nafninu <em>Páskaeyja</em>), og virt þessum dularfullu
           styttum fyrir okkur í fullri reisn á 21. öldinni.</p>
         <p>Það er víst ótrúlega auðvelt að skoða Moai-ana í þar
@@ -4841,5 +4846,7 @@
           <em>Rúnar Berg Baugsson</em></p>
       </section>
     </article>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+    <script src="map.js"></script>
   </body>
 </html>

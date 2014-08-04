@@ -35,7 +35,8 @@ gulp.task 'fonts', ->
         .pipe gulp.dest 'public/assets/fonts/'
 
 gulp.task 'less', ['fonts'], ->
-    gulp.src ['styles/**/*.less']
+    gulp.src ['styles/**/*.less',
+              'contents/**/*.less']
         .pipe less()
         .pipe autoprefix()
         .pipe gulp.dest 'public/'
@@ -44,5 +45,6 @@ gulp.task 'watch', ['default'], ->
     gulp.watch 'contents/**/*.{html,md,svg}', ['articles']
     gulp.watch 'contents/**/*.coffee', ['coffee']
     gulp.watch 'styles/**/*.less', ['less']
+    gulp.watch 'contents/**/*.less', ['less']
 
 gulp.task 'default', ['coffee', 'less', 'articles']
