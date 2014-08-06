@@ -3,17 +3,11 @@ autoprefix = require 'gulp-autoprefixer'
 coffee = require 'gulp-coffee'
 fileinclude = require 'gulp-file-include'
 less = require 'gulp-less'
-webserver = require 'gulp-webserver'
+livereload = require 'gulp-livereload'
 
 marked = require 'marked'
 myMarked = (src) ->
     marked(src).replace(/@@include\(&quot;(.+)&quot;\)/, '@@include("$1")')
-
-gulp.task 'serve', ->
-    gulp.src 'public'
-    .pipe webserver {
-        livereload: true
-    }
 
 gulp.task 'articles', ->
     gulp.src [
@@ -31,7 +25,7 @@ gulp.task 'coffee', ->
         .pipe gulp.dest 'public/'
 
 gulp.task 'fonts', ->
-    gulp.src ['assets/fonts/*.{otf,ttf}']
+    gulp.src ['assets/fonts/*']
         .pipe gulp.dest 'public/assets/fonts/'
 
 gulp.task 'less', ['fonts'], ->
@@ -42,9 +36,14 @@ gulp.task 'less', ['fonts'], ->
         .pipe gulp.dest 'public/'
 
 gulp.task 'watch', ['default'], ->
+    livereload.listen()
     gulp.watch 'contents/**/*.{html,md,svg}', ['articles']
     gulp.watch 'contents/**/*.coffee', ['coffee']
     gulp.watch 'styles/**/*.less', ['less']
     gulp.watch 'contents/**/*.less', ['less']
+    gulp.watch('public/**').on 'change', ->
+        setTimeout livereload.changed, 200
+
+    return
 
 gulp.task 'default', ['coffee', 'less', 'articles']

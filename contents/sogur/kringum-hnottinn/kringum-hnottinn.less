@@ -1,32 +1,80 @@
-.toc {
-  position: relative;
-  text-align: right;
-  > ol {
-    list-style: upper-roman;
-    display: none;
-    position: absolute;
-    right: 0;
-    z-index: 2;
-  }
-  &:hover > ol {
-    background: unset;
-    display: block;
-  }
+@map-height: 40rem;
+@toc-background: #C5B3BF;
 
-  ol, li, h3 {
-    margin: 0;
+.toc {
+  background: fadeout(@toc-background, 100%);
+  counter-reset: toc-part;
+  display: inline-block;
+  opacity: 0.2;
+  overflow-x: hidden;
+  padding: 0 0.8em;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  z-index: 2;
+  transition: opacity .5s, background .5s, box-shadow .5s;
+  &:hover {
+    background: fadeout(@toc-background, 60%);
+    box-shadow: -3px 0 5px fadeout(darken(@toc-background, 20%), 60%);
+    opacity: 1;
   }
   
-  ol ol {
-    list-style: none;
+  > h3 {
     display: none;
   }
-
-  ol li:hover ol {
+  
+  ol, li, h3, h4 {
+    margin: 0;
+    padding: 0;
+  }
+  
+  > ol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+    height: @map-height;
+    > li {
+      margin-bottom: .5em;
+    }
+  }
+  
+  ol label {
+    cursor: pointer;
     display: block;
+    position: relative;
+    &::before {
+      counter-increment: toc-part;
+      content: counter(toc-part, upper-roman) ".";
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  ol ol {
+    list-style: none;
+    overflow: hidden;
+    li {
+      font-size: .9em;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .5s, opacity .5s;
+      a {
+        color: inherit;
+      }
+    }
+  }
+  ol input[name='toc-state'] {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+    &:checked + ol li {
+      max-height: 1.2em;
+      opacity: 1;
+    }
   }
 }
 
 #toc-map {
-  height: 50em;
+  height: @map-height;
 }
