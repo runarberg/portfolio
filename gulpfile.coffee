@@ -12,7 +12,7 @@ myMarked = (src) ->
 gulp.task 'articles', ->
     gulp.src [
             'contents/index.html',
-            'contents/**/*.{html,svg,js}'
+            'contents/**/*.{html,svg,js,geojson}'
         ]
         .pipe fileinclude
             filters :
@@ -23,6 +23,10 @@ gulp.task 'coffee', ->
     gulp.src ['contents/**/*.coffee']
         .pipe coffee()
         .pipe gulp.dest 'public/'
+
+gulp.task 'img', ->
+    gulp.src ['contents/**/*.{png,jpeg}']
+        .pipe gulp.dest 'public'
 
 gulp.task 'fonts', ->
     gulp.src ['assets/fonts/*']
@@ -37,7 +41,8 @@ gulp.task 'less', ['fonts'], ->
 
 gulp.task 'watch', ['default'], ->
     livereload.listen()
-    gulp.watch 'contents/**/*.{html,md,svg}', ['articles']
+    gulp.watch 'contents/**/*.{jpeg,png}', ['img']
+    gulp.watch 'contents/**/*.{html,md,svg,geojson}', ['articles']
     gulp.watch 'contents/**/*.coffee', ['coffee']
     gulp.watch 'styles/**/*.less', ['less']
     gulp.watch 'contents/**/*.less', ['less']
@@ -46,4 +51,4 @@ gulp.task 'watch', ['default'], ->
 
     return
 
-gulp.task 'default', ['coffee', 'less', 'articles']
+gulp.task 'default', ['coffee', 'less', 'articles', 'img']

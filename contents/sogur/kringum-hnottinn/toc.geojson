@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {"type": "Feature",
+     "id": "toc-á-íslandi-point",
+     "geometry": {
+       "type": "Point",
+       "coordinates": [-17.562, 61.554]},
+     "properties": {
+       "opacity": 0.4,
+       "href": "#á-íslandi",
+       "h1": "Á Íslandi"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-á-íslandi-line",
+     "geometry": {
+       "type": "LineString",
+       "coordinates": [
+         [-22.4396181106567, 63.8477436480059],
+         [-0.1099, 51.5049]
+       ]},
+     "properties": {
+       "opacity": 0.4,
+       "href": "#á-íslandi",
+       "h1": "Á Íslandi"
+     }
+    }
+  ]
+}
