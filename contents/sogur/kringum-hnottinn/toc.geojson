@@ -7,7 +7,6 @@
        "type": "Point",
        "coordinates": [-17.562, 61.554]},
      "properties": {
-       "opacity": 0.4,
        "href": "#á-íslandi",
        "h1": "Á Íslandi"
      }
@@ -21,9 +20,78 @@
          [-0.1099, 51.5049]
        ]},
      "properties": {
-       "opacity": 0.4,
        "href": "#á-íslandi",
        "h1": "Á Íslandi"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-london-er-rachidia-point",
+     "geometry": {
+       "type": "Point",
+       "coordinates": [-2.57, 35.18]},
+     "properties": {
+       "href": "#london-er-rachidia",
+       "h1": "London – Er Rachidia"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-london-er-rachidia-line",
+     "geometry": {
+       "type": "LineString",
+       "coordinates": [
+         [-0.1099, 51.5049],
+         [-4.2528, 31.5555]
+       ]},
+     "properties": {
+       "href": "#london-er-rachidia",
+       "h1": "London – Er Rachidia"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-er-rachidia-rabat-point",
+     "geometry": {
+       "type": "Point",
+       "coordinates": [-8.02, 33.42]},
+     "properties": {
+       "href": "#er-rachidia-rabat",
+       "h1": "Er Rachidia – Rabat"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-er-rachidia-rabat-line",
+     "geometry": {
+       "type": "LineString",
+       "coordinates": [
+         [-4.2528, 31.5555],
+         [-6.50, 34.02]
+       ]},
+     "properties": {
+       "href": "#er-rachidia-rabat",
+       "h1": "Er Rachidia – Rabat"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-madrid-point",
+     "geometry": {
+       "type": "Point",
+       "coordinates": [-5.23, 40.23]},
+     "properties": {
+       "href": "#madrid",
+       "h1": "Madrid"
+     }
+    },
+    {"type": "Feature",
+     "id": "toc-madrid-line",
+     "geometry": {
+       "type": "LineString",
+       "coordinates": [
+         [-6.50, 34.02],
+         [-3.43, 40.23],
+         [-42, 30]
+       ]},
+     "properties": {
+       "href": "#madrid",
+       "h1": "Madrid"
      }
     }
   ]

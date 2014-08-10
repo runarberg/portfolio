@@ -1,25 +1,35 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoicnVuYXJiZXJnIiwiYSI6IjhqWmd0ZTgifQ.tq-NpBG7oDG9Q7Vc9pIsJw'
 
-map = L.mapbox.map 'toc-map', 'runarberg.j54p5f5j', zoomControl: false
-map.scrollWheelZoom.disable()
+map = L.mapbox.map 'toc-map', 'runarberg.j54p5f5j',
+    zoomControl: false
+    keyboard: false
+    doubleClickZoom: false
+    scrollWheelZoom: false
+    touchZoom: false
 
 map.setView [63.9, -22.46], 5
 
 tocLayer = L.mapbox.featureLayer()
-        .loadURL('toc.geojson')
-        .on 'layeradd', (e) ->
-            marker = e.layer
-            feature = marker.feature
-            if feature.id.match /point$/
-                marker.setIcon L.divIcon
-                    className:"toc-spot "+ feature.id
-                    iconSize: [50, 50]
-                    html: "<a href='#{feature.properties.href}'>#{feature.properties.h1}</a>"
-            return
-        .on 'click', (e) ->
-            window.location.hash = e.layer.feature.properties.href
-            return
-        .addTo map
+    .loadURL('toc.geojson')
+    .on 'layeradd', (e) ->
+        marker = e.layer
+        feature = marker.feature
+        if feature.id.match /point$/
+            marker.setIcon L.divIcon
+                className:"toc-spot "+ feature.id
+                iconSize: [50, 50]
+                html: "<a href='#{feature.properties.href}'>#{feature.properties.h1}</a>"
+        else
+            marker.setStyle
+                weight: 3
+                dashArray: "20,15"
+                lineJoin: "round"
+                lineCap: "round"
+        return
+    .on 'click', (e) ->
+        window.location.hash = e.layer.feature.properties.href
+        return
+    .addTo map
 
 stateInputs = document.querySelectorAll "input[name='toc-state']"
 Array.prototype.forEach.call stateInputs, (input) ->

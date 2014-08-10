@@ -79,8 +79,8 @@
   height: @map-height;
 }
 
-.toc-á-íslandi-point {
-  background: url("img/á-íslandi.jpeg");
+.toc-spot {
+  background: black;
   border-radius: 50px;
   opacity: 0.8;
   &:hover, &.hover {
@@ -94,7 +94,6 @@
     font-family: "Crimson Text", serif;
     font-size: 1.2em;
     font-weight: bold;
-    margin: 50px 0 0 -1.2em;
     padding: .2em 1em;
     position: absolute;
     text-align: center;
@@ -103,5 +102,19 @@
   &:hover a, &.hover a {
     color: black;
     display: block;
+  }
+
+  &.toc-á-íslandi-point {
+    background: url("img/á-íslandi.jpeg");
+    a {
+      margin: 50px 0 0 -1.2em;
+    }
+  }
+
+  &.toc-london-er-rachidia-point {
+    background: url("img/á-íslandi.jpeg");
+    a {
+      margin: -1.5em 0 0 1.2em;
+    }
   }
 }
