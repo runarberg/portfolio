@@ -3,11 +3,8 @@ autoprefix = require 'gulp-autoprefixer'
 coffee = require 'gulp-coffee'
 fileinclude = require 'gulp-file-include'
 less = require 'gulp-less'
-livereload = require 'gulp-livereload'
 
-marked = require 'marked'
-myMarked = (src) ->
-    marked(src).replace(/@@include\(&quot;(.+)&quot;\)/, '@@include("$1")')
+md = require('markdown-it')()
 
 gulp.task 'articles', ->
     gulp.src [
@@ -16,7 +13,8 @@ gulp.task 'articles', ->
         ]
         .pipe fileinclude
             filters :
-                markdown: myMarked
+                markdown: (str) ->
+                    md.render str
         .pipe gulp.dest 'public/'
 
 gulp.task 'coffee', ->
